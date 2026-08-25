@@ -53,6 +53,84 @@ document.addEventListener("DOMContentLoaded", function () {
     for (var i = 0; i < revealEls.length; i++) { revealEls[i].classList.add("is-visible"); }
   }
 
+  /* ---------- Photo gallery lightbox ---------- */
+  var galleries = document.querySelectorAll(".gallery-grid");
+  if (galleries.length) {
+    var overlay = document.createElement("div");
+    overlay.className = "lightbox-overlay";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-label", "Photo viewer");
+    overlay.innerHTML =
+      '<button class="lightbox-btn lightbox-close" aria-label="Close photo viewer">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+      '<button class="lightbox-btn lightbox-prev" aria-label="Previous photo">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 19l-7-7 7-7"/></svg></button>' +
+      '<button class="lightbox-btn lightbox-next" aria-label="Next photo">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>' +
+      '<figure class="lightbox-figure"><img alt=""><figcaption class="lightbox-caption"></figcaption></figure>';
+    document.body.appendChild(overlay);
+
+    var lbImg = overlay.querySelector("img");
+    var lbCaption = overlay.querySelector(".lightbox-caption");
+    var currentGroup = [];
+    var currentIndex = 0;
+    var lastFocused = null;
+
+    function showIndex(i) {
+      if (!currentGroup.length) return;
+      currentIndex = (i + currentGroup.length) % currentGroup.length;
+      var el = currentGroup[currentIndex];
+      lbImg.src = el.getAttribute("src");
+      lbImg.alt = el.getAttribute("alt") || "";
+      lbCaption.textContent = el.getAttribute("alt") || "";
+    }
+
+    function openLightbox(gridEl, clickedImg) {
+      currentGroup = Array.prototype.slice.call(gridEl.querySelectorAll("img"));
+      currentIndex = currentGroup.indexOf(clickedImg);
+      showIndex(currentIndex);
+      lastFocused = document.activeElement;
+      overlay.classList.add("open");
+      overlay.querySelector(".lightbox-close").focus();
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+      if (lastFocused) { lastFocused.focus(); }
+    }
+
+    for (var gi = 0; gi < galleries.length; gi++) {
+      var grid = galleries[gi];
+      var imgs = grid.querySelectorAll("img");
+      for (var ii = 0; ii < imgs.length; ii++) {
+        var im = imgs[ii];
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "gallery-item";
+        btn.setAttribute("aria-label", "View larger photo: " + (im.getAttribute("alt") || "photo " + (ii + 1)));
+        im.parentNode.insertBefore(btn, im);
+        btn.appendChild(im);
+        (function (gridRef, imgRef) {
+          btn.addEventListener("click", function () { openLightbox(gridRef, imgRef); });
+        })(grid, im);
+      }
+    }
+
+    overlay.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+    overlay.querySelector(".lightbox-prev").addEventListener("click", function () { showIndex(currentIndex - 1); });
+    overlay.querySelector(".lightbox-next").addEventListener("click", function () { showIndex(currentIndex + 1); });
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeLightbox(); });
+    document.addEventListener("keydown", function (e) {
+      if (!overlay.classList.contains("open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showIndex(currentIndex - 1);
+      if (e.key === "ArrowRight") showIndex(currentIndex + 1);
+    });
+  }
+
   /* ---------- Contact form ----------
      GitHub Pages cannot run server-side code, so this form is wired to
      submit to Formspree (a free form backend: https://formspree.io).

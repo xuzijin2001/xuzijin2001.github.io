@@ -18,8 +18,10 @@ A static website for **Bilingual Early Educators Alliance**, built with plain HT
 ├── js/
 │   └── script.js            Mobile menu, scroll animation, contact form
 ├── images/
-│   ├── logo-full.png        Full logo (icon + wordmark), used in every header
-│   ├── logo-icon.png        Icon-only crop, used in the footer
+│   ├── logo-full.png          Full BEEA logo (icon + wordmark), used in every header
+│   ├── logo-icon.png          Icon-only crop, used in the footer
+│   ├── partner-urban-college.png  Urban College of Boston logo (header + footer)
+│   ├── wechat-qr.png           WeChat group QR code (footer + Contact page)
 │   ├── favicon.png / favicon-32.png   Browser-tab icons, cropped from the logo
 │   ├── photo-workshop.jpg    Real photo: a BEEA professional development workshop
 │   ├── photo-group.jpg       Real photo: educators together with the BEEA banner
@@ -117,17 +119,30 @@ Each resource on `resources.html` is one `.resource-card` block with a title, sh
 
 The "Our Impact" section on `index.html` uses clearly marked `[ # ]` placeholders with a "Placeholder" tag — intentionally, since no real numbers were provided. Search for `class="stat"` in `index.html`, replace `[ # ]` with the real figure, and remove the `<span class="placeholder-flag">Placeholder</span>` line once it's a confirmed number.
 
+### The photo gallery
+
+`our-work.html` ("BEEA in the Community") and `programs.html` ("Past Events") each have a `.gallery-grid` of real event photos. Click any photo to open it larger in a lightbox — you can navigate between photos with the arrow buttons, arrow keys, or close with Escape or by clicking outside the image. This is handled automatically by `js/script.js`; you don't need to write any code to add a working lightbox to a new gallery — just add more `<img>` tags inside a `.gallery-grid` container.
+
 ### Swapping in more real photography
 
-Three real photos from BEEA events are already in use across the site (`images/photo-workshop.jpg`, `photo-group.jpg`, `photo-event-banner.jpg`). To add more:
+Six real photos from BEEA events are already in use across the site (`images/photo-workshop.jpg`, `photo-group.jpg`, `photo-event-banner.jpg`, `photo-presenters-trio.jpg`, `photo-workshop-wide.jpg`, `photo-presenter-podium.jpg`). To add more:
 
 1. Add the new image file to `images/`.
-2. Find the matching `<img src="images/...">` tag and update the `src` and `alt` text.
+2. Find the matching `<img src="images/...">` tag and update the `src` and `alt` text, or add a new `<img>` inside a `.gallery-grid` to include it in a gallery.
 3. Keep new photos under ~300KB where possible (resize to around 1400px on the long edge) so pages stay fast.
 
 ### Updating the logo
 
 The header and footer use `images/logo-full.png` and `images/logo-icon.png`, extracted directly from the logo file you provided. If you receive an updated logo later, replace these files (keeping the same names) or update the `<img src="...">` paths if the filename changes.
+
+### Updating the Urban College of Boston logo, WeChat QR code, phone, or address
+
+These now appear consistently in the footer of every page (the header intentionally shows only the BEEA logo):
+
+- **Urban College logo** — `images/partner-urban-college.png`, shown in the footer as a nod to BEEA being a department of Urban College of Boston. To update it, replace the file (same name), or update every `<img src="images/partner-urban-college.png">` reference if you rename it.
+- **WeChat QR code** — `images/wechat-qr.png`, shown in the footer of every page and in a larger card on the Contact page. If your WeChat group link changes, generate a new QR code image and replace this file.
+- **Phone number** — search for `617-276-2667` (it appears as `tel:16172762667` links) across the HTML files to update it everywhere at once.
+- **Address** — search for `2 Boylston St #2` across the HTML files to update it everywhere at once.
 
 ### Connecting the contact form
 
