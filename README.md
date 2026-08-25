@@ -1,57 +1,50 @@
 # Bilingual Early Educators Alliance — Website
 
-A static website for **Bilingual Early Educators Alliance Corp.**, built with plain HTML, CSS, and JavaScript. No build tools, no server, no database — it's ready to host for free on GitHub Pages and to connect to `bilingualearlyeducatorsalliance.com`.
+A static website for **Bilingual Early Educators Alliance**, built with plain HTML, CSS, and JavaScript. No build tools, no server, no database — ready to host for free on GitHub Pages and connect to `bilingualearlyeducatorsalliance.com`.
 
 ```
 /
 ├── index.html            Home
-├── about.html             About (mission, vision)
-├── our-work.html          What We Do, Our Approach, Partnerships
-├── get-involved.html      Get Involved, Partnerships
-├── contact.html           Contact + message form
-├── 404.html                Not-found page (GitHub Pages shows this automatically)
-├── CNAME                   Tells GitHub Pages your custom domain
+├── about.html             About (story, mission, vision, values, leadership)
+├── our-work.html          How BEEA supports educators, + photo gallery
+├── programs.html          Upcoming events, workshops, community programs, past events
+├── resources.html          Categorized resource cards (ready for real files)
+├── get-involved.html      Membership, partnership, volunteering, support
+├── contact.html            Contact form + location + social links
+├── 404.html                 Not-found page
+├── CNAME                    Tells GitHub Pages your custom domain
 ├── css/
-│   └── style.css           All styles (design tokens at the top)
+│   └── style.css            All styles (design tokens at the top)
 ├── js/
-│   └── script.js           Mobile menu, scroll animation, contact form
+│   └── script.js            Mobile menu, scroll animation, contact form
 ├── images/
-│   ├── logo-full.png        Full logo (icon + wordmark), used in header & footer
-│   ├── logo-icon.png        Icon-only crop of the logo (mark without text)
-│   ├── favicon.png          256×256 browser-tab icon, cropped from the logo
-│   ├── favicon-32.png       32×32 browser-tab icon
-│   ├── hero-illustration.svg
-│   ├── about-illustration.svg
-│   ├── why-matters-illustration.svg
-│   └── community-illustration.svg
+│   ├── logo-full.png        Full logo (icon + wordmark), used in every header
+│   ├── logo-icon.png        Icon-only crop, used in the footer
+│   ├── favicon.png / favicon-32.png   Browser-tab icons, cropped from the logo
+│   ├── photo-workshop.jpg    Real photo: a BEEA professional development workshop
+│   ├── photo-group.jpg       Real photo: educators together with the BEEA banner
+│   └── photo-event-banner.jpg Real photo: a BEEA event display banner
 └── README.md               This file
 ```
 
 ## 1. Preview the website locally
 
-You don't need to install anything to look at the site — but opening `index.html` directly from your file system (double-clicking it) works for a quick look, though a couple of browser behaviors differ slightly from a real server. For an accurate preview:
+**Option A — VS Code:** install the free "Live Server" extension, open this folder, right-click `index.html` → **Open with Live Server**.
 
-**Option A — VS Code**
-1. Install the free "Live Server" extension.
-2. Open this folder in VS Code, right-click `index.html`, choose **Open with Live Server**.
-
-**Option B — Python (already on most Macs; free to install on Windows)**
+**Option B — Python:**
 ```bash
 cd path/to/this/folder
 python3 -m http.server 8000
 ```
-Then open `http://localhost:8000` in your browser.
+Then open `http://localhost:8000`.
 
-**Option C — Node.js**
-```bash
-npx serve .
-```
+**Option C — Node.js:** `npx serve .`
 
 ## 2. Upload the files to GitHub
 
-1. Create a free GitHub account at [github.com](https://github.com) if you don't have one.
-2. Create a new repository (Settings icon → **New repository**). Name it anything — for a personal/organization page you'd name it `<your-username>.github.io`, but any name works for a custom domain.
-3. On your computer, inside this folder, run:
+1. Create a free GitHub account if you don't have one.
+2. Create a new repository.
+3. From inside this folder:
    ```bash
    git init
    git add .
@@ -60,73 +53,97 @@ npx serve .
    git remote add origin https://github.com/<your-username>/<your-repo>.git
    git push -u origin main
    ```
-   (Or use GitHub Desktop / the "uploading an existing file" option in the GitHub web UI if you'd rather not use the command line — you can drag and drop the whole folder.)
+   (Or drag-and-drop the whole folder using GitHub's web upload if you'd rather not use the command line.)
 
 ## 3. Enable GitHub Pages
 
-1. In your repository on GitHub, go to **Settings → Pages**.
+1. In the repository, go to **Settings → Pages**.
 2. Under "Build and deployment," set **Source** to **Deploy from a branch**.
-3. Choose the **main** branch and the **/ (root)** folder, then **Save**.
-4. GitHub will give you a URL like `https://<your-username>.github.io/<your-repo>/`. It can take a minute or two to go live.
+3. Choose the **main** branch and **/ (root)** folder, then **Save**.
+4. GitHub gives you a URL like `https://<your-username>.github.io/<your-repo>/` within a minute or two.
 
 ### Connecting your GoDaddy domain
 
-1. Still in **Settings → Pages**, under "Custom domain," enter `bilingualearlyeducatorsalliance.com` and save. (This repo already includes a `CNAME` file with that domain, so GitHub Pages recognizes it.)
-2. In your GoDaddy DNS settings for the domain, add:
-   - Four **A** records for `@` pointing to GitHub's IP addresses:
-     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+1. In **Settings → Pages**, under "Custom domain," enter `bilingualearlyeducatorsalliance.com` and save. (The included `CNAME` file already contains exactly this domain, so GitHub Pages recognizes it automatically.)
+2. In your GoDaddy DNS settings, add:
+   - Four **A** records for `@` pointing to: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
    - One **CNAME** record for `www` pointing to `<your-username>.github.io`
-3. DNS changes can take anywhere from a few minutes to a day to take effect. Once it does, check "Enforce HTTPS" back in GitHub Pages settings for a secure `https://` connection.
+3. DNS changes can take minutes to a day. Once live, check "Enforce HTTPS" in GitHub Pages settings.
 
-## 4. Updating text and images later
+## 4. Updating content later
 
-Everything is plain HTML/CSS, so you can edit it with any text editor (VS Code, Notepad, TextEdit) — no coding environment required.
+Everything is plain HTML/CSS, editable with any text editor — no coding environment required.
 
 | To change... | Edit this file |
 |---|---|
-| Homepage hero, "What We Do" preview, "Why It Matters," "Our Approach" | `index.html` |
-| Mission, Vision, org story | `about.html` |
-| Full "What We Do" cards, "Our Approach," Partnerships | `our-work.html` |
-| "Get Involved" options, Partnerships | `get-involved.html` |
+| Homepage hero, mission, impact stats, sample events | `index.html` |
+| Story, mission, vision, values, leadership | `about.html` |
+| The six "our work" areas and photo gallery | `our-work.html` |
+| Events, workshops, community programs | `programs.html` |
+| Resource cards by category | `resources.html` |
+| Membership / partner / volunteer / support options | `get-involved.html` |
 | Contact details and form | `contact.html` |
-| Colors, fonts, spacing, layout | `css/style.css` (see the `:root` section at the top for the color and font variables used everywhere) |
-| Mobile menu behavior, scroll animation, form handling | `js/script.js` |
-| Site icon (browser tab icon) | `images/favicon.png`, `images/favicon-32.png` |
-| Logo in the header and footer | `images/logo-full.png` (referenced in every page's `<header>` and `<footer>`) |
-| Illustrations | `images/*.svg` |
+| Colors, fonts, spacing, layout | `css/style.css` (see the `:root` section at the top) |
+| Mobile menu, scroll animation, form handling | `js/script.js` |
 
-To change text, open the relevant `.html` file, find the sentence (Ctrl+F / Cmd+F works well), and edit it directly between the HTML tags.
+### Editing event cards
+
+Each event on `index.html` and `programs.html` is one `.event-card` block:
+
+```html
+<div class="event-card">
+  <div class="event-date">Date TBD</div>
+  <div class="event-body">
+    <h3>Sample Workshop Title</h3>
+    <p>Short description...</p>
+    <div class="event-location">...Location TBD</div>
+    <a class="btn btn-outline-ink btn-sm" href="contact.html">Learn More</a>
+  </div>
+</div>
+```
+Copy this block to add a new event, or edit the text in place. Point "Learn More" at a registration page, form, or `mailto:` link if you have one.
+
+### Editing resource cards
+
+Each resource on `resources.html` is one `.resource-card` block with a title, short description, and a "Coming Soon" tag. Once you have a real PDF or file to link:
+
+1. Add the file to a new folder, e.g. `files/your-resource.pdf`.
+2. Replace the `<span class="tag">Coming Soon</span>` with a link, e.g.:
+   ```html
+   <a class="btn btn-outline-ink btn-sm" href="files/your-resource.pdf">Download</a>
+   ```
+
+### Filling in the placeholder impact statistics
+
+The "Our Impact" section on `index.html` uses clearly marked `[ # ]` placeholders with a "Placeholder" tag — intentionally, since no real numbers were provided. Search for `class="stat"` in `index.html`, replace `[ # ]` with the real figure, and remove the `<span class="placeholder-flag">Placeholder</span>` line once it's a confirmed number.
+
+### Swapping in more real photography
+
+Three real photos from BEEA events are already in use across the site (`images/photo-workshop.jpg`, `photo-group.jpg`, `photo-event-banner.jpg`). To add more:
+
+1. Add the new image file to `images/`.
+2. Find the matching `<img src="images/...">` tag and update the `src` and `alt` text.
+3. Keep new photos under ~300KB where possible (resize to around 1400px on the long edge) so pages stay fast.
 
 ### Updating the logo
 
-The header and footer use `images/logo-full.png`, the organization's real logo. If you receive an updated or higher-resolution version of the logo later:
-
-1. Export it as a PNG (ideally on a white or transparent background) and save it into `images/`, replacing `logo-full.png` (or using a new filename).
-2. If the filename changes, update the `<img src="...">` path in the `<header>` and `<footer>` of every HTML file, or do a find-and-replace across all files for the old filename.
-3. To regenerate the browser-tab icon from a new logo, crop it down to just the icon/mark (no text), pad it to a square, and export at 256×256 (`favicon.png`) and 32×32 (`favicon-32.png`).
-
-### Swapping in real photography
-
-The illustrations in `/images` are intentional placeholders — geometric, abstract art rather than stock photography — so the site never uses generic corporate images or stands in for real photos of your educators. When you have real photographs (of bilingual educators, classrooms, workshops, community events, etc.), replace them like this:
-
-1. Add your photo file to the `images/` folder (JPG or PNG, ideally under 500KB for fast loading).
-2. Find the matching `<img src="images/...">` tag in the relevant HTML file.
-3. Replace the `src` with your new filename, and update the `alt` text to describe the new photo.
+The header and footer use `images/logo-full.png` and `images/logo-icon.png`, extracted directly from the logo file you provided. If you receive an updated logo later, replace these files (keeping the same names) or update the `<img src="...">` paths if the filename changes.
 
 ### Connecting the contact form
 
-GitHub Pages only serves static files, so the contact form needs a free third-party service to actually deliver messages to your inbox. The form is already built and wired up for **[Formspree](https://formspree.io)** (free tier: 50 submissions/month, no credit card):
+GitHub Pages only serves static files, so the contact form needs a free third-party service to actually deliver messages. It's already wired for **[Formspree](https://formspree.io)** (free tier, no credit card):
 
 1. Create a free Formspree account and a new form.
-2. Copy the endpoint URL it gives you (something like `https://formspree.io/f/abc123xy`).
-3. Open `contact.html`, find `<form id="contact-form" action="#" method="POST">`, and replace `#` with your endpoint.
-4. Formspree will ask you to confirm your email address the first time a message is sent — that's normal.
+2. Copy the endpoint (e.g. `https://formspree.io/f/abc123xy`).
+3. In `contact.html`, find `<form id="contact-form" action="#" method="POST">` and replace `#` with your endpoint.
 
-Alternatives that also work with a static site: [Getform](https://getform.io), [Basin](https://usebasin.com), or Google Forms embedded as an iframe. Any of these can be dropped in the same way by pointing the form's `action` at their endpoint.
+Until this is connected, the form shows a friendly "not connected yet" message instead of failing silently.
 
 ## Design notes
 
-- **The color palette is sampled directly from the organization's logo**: the navy and green from the wordmark, the gold from the sunburst, and a violet pulled from the rainbow arc across the book. These are defined as CSS variables at the top of `css/style.css` (`--ink` / navy, `--green`, `--gold`, `--purple`), so a palette or font change only needs to happen in one place. The illustrations in `/images` were recolored to match.
-- **A thin rainbow strip** sits under the header on every page (`.rainbow-strip` in `css/style.css`) — a quiet, literal callback to the rainbow arc in the logo's open-book mark, rather than a decorative flourish invented separately from the brand.
-- Section labels appear in English with a Spanish line underneath (for example, "Why it matters / Por qué importa") as a small, recurring nod to the bilingual mission — look for the `.eyebrow` class if you want to adjust or extend this.
-- No statistics, staff names, testimonials, partner names, or program details were invented. Sections that will eventually hold that information (like the "About" story) are marked with a dashed placeholder note so they're easy to find and fill in later.
+- **Palette:** soft sage (`--sage`), pale yellow (`--yellow`), and warm cream (`--cream`) backgrounds, with muted orange and soft pink used sparingly as accents — plus a deeper forest green (`--forest`) and the logo's navy pulled directly from your actual logo file, so the site's "brand color" is a real sampled color, not a guess.
+- **Signature device:** real photographs are framed in soft organic ("blob") shapes rather than plain rectangles — a nod to the playful, rounded Kiddie-style reference without tipping into a childcare-site look, since the photos themselves are professional educators at work.
+- **Typography:** Fredoka (rounded, friendly display type) paired with Inter (a clean, highly legible body face) — playful headlines, professional body copy.
+- **A thin rainbow strip** under the header on every page echoes the rainbow arc in the logo's open-book mark.
+- No statistics, staff names, or leadership bios were invented. The impact numbers are explicitly marked placeholders, and the Leadership section is a clearly labeled "coming soon" note rather than fabricated names.
+- No donation or payment system is included, per the brief — the "Support Our Mission" option links to the Contact page instead.

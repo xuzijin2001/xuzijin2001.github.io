@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
       toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
 
-    // Close the menu after choosing a link (mobile)
     var navLinkEls = links.querySelectorAll("a");
     for (var i = 0; i < navLinkEls.length; i++) {
       navLinkEls[i].addEventListener("click", function () {
@@ -31,11 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ---------- Footer year ---------- */
   var yearEl = document.querySelector("[data-year]");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+  if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
 
-  /* ---------- Subtle scroll reveal (skipped if user prefers reduced motion) ---------- */
+  /* ---------- Subtle scroll reveal ---------- */
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var revealEls = document.querySelectorAll(".reveal");
 
