@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 620" role="img" aria-labelledby="aboutTitle aboutDesc">
+  <title id="aboutTitle">Illustration placeholder</title>
+  <desc id="aboutDesc">Placeholder illustration representing a mentoring conversation between two educators. Replace with a real photograph for the live site.</desc>
+  <rect width="560" height="620" fill="#FBEFD7"/>
+  <circle cx="280" cy="300" r="230" fill="#EFE7F5"/>
+
+  <!-- two seated figures facing each other -->
+  <g transform="translate(200 260)">
+    <circle cx="0" cy="0" r="38" fill="#26344A"/>
+    <path d="M-58 100 C-58 40 -30 10 0 10 C30 10 58 40 58 100 Z" fill="#DAB250"/>
+  </g>
+  <g transform="translate(370 270)">
+    <circle cx="0" cy="0" r="34" fill="#6B3FA0"/>
+    <path d="M-54 96 C-54 38 -28 10 0 10 C28 10 54 38 54 96 Z" fill="#3C8C4A"/>
+  </g>
+
+  <!-- open notebook between them -->
+  <g transform="translate(250 400)">
+    <rect x="-70" y="-6" width="140" height="70" rx="8" fill="#FFFFFF"/>
+    <line x1="0" y1="-6" x2="0" y2="64" stroke="#E4DACB" stroke-width="2"/>
+    <line x1="-52" y1="14" x2="-16" y2="14" stroke="#3C8C4A" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-52" y1="28" x2="-24" y2="28" stroke="#DAB250" stroke-width="4" stroke-linecap="round"/>
+    <line x1="16" y1="14" x2="52" y2="14" stroke="#6B3FA0" stroke-width="4" stroke-linecap="round"/>
+    <line x1="16" y1="28" x2="44" y2="28" stroke="#3C8C4A" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- small decorative stars / sparks -->
+  <g fill="#26344A" opacity="0.8">
+    <circle cx="120" cy="150" r="4"/>
+    <circle cx="440" cy="180" r="5"/>
+    <circle cx="460" cy="440" r="4"/>
+    <circle cx="100" cy="470" r="5"/>
+  </g>
+</svg>

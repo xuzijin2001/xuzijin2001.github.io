@@ -1,0 +1,634 @@
+/* ==========================================================================
+   Bilingual Early Educators Alliance — Stylesheet
+   Design system: tokens → base → layout → components → pages → utilities
+   ========================================================================== */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Color: sampled directly from the organization's own logo — the
+     sun-and-book mark's navy/green wordmark, gold sunburst, and the
+     rainbow arc across the book's open pages. Using the real brand
+     colors (rather than a generic palette) is what keeps this site
+     from reading as a template. */
+  --ink: #26344A;            /* deep navy (from logo wordmark) — headings, nav, dark blocks */
+  --ink-soft: #57647A;       /* muted navy-gray body text on light backgrounds */
+  --paper: #FBF6EC;          /* warm ivory page background */
+  --paper-raised: #FFFFFF;   /* card surfaces */
+  --line: #E4DACB;           /* hairline borders on paper */
+
+  --gold: #DAB250;           /* logo sunburst gold — primary accent, CTAs */
+  --gold-dark: #C39638;      /* hover state */
+  --purple: #6B3FA0;         /* logo rainbow-arc violet — secondary accent, emphasis */
+  --purple-dark: #5A3485;    /* hover state */
+  --green: #3C8C4A;          /* logo wordmark green — tertiary accent, icons, dividers */
+  --green-tint: #E7F1E7;     /* light tinted panels */
+  --purple-tint: #EFE7F5;    /* light tinted panels */
+  --gold-tint: #FBEFD7;      /* light tinted panels */
+
+  /* legacy aliases kept so existing component styles below don't need
+     to be rewired one-by-one — these now point at brand colors */
+  --marigold: var(--gold);
+  --marigold-dark: var(--gold-dark);
+  --berry: var(--purple);
+  --sky: var(--green);
+  --sky-tint: var(--green-tint);
+  --berry-tint: var(--purple-tint);
+  --marigold-tint: var(--gold-tint);
+
+  /* logo's rainbow book-arc, used sparingly as a single signature strip */
+  --rainbow: linear-gradient(90deg, #C23827, #DAB250, #8BBF4A, #2F7A3E, #368F97, #495D83, #6B3FA0);
+
+  --ink-rgb: 38, 52, 74;
+
+  /* Type */
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", serif;
+  --font-body: "Karla", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Layout */
+  --max-w: 1180px;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+  --shadow-card: 0 12px 32px -18px rgba(var(--ink-rgb), 0.35);
+  --shadow-soft: 0 6px 18px -10px rgba(var(--ink-rgb), 0.25);
+}
+
+/* ---------- Reset / base ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+  font-size: 17px;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { margin: 0; padding: 0; }
+button { font-family: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
+h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+h3 { font-size: 1.35rem; }
+
+p { margin: 0 0 1em; color: var(--ink-soft); }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section { padding: 88px 0; }
+@media (max-width: 640px) {
+  section { padding: 56px 0; }
+}
+
+/* skip link for accessibility */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 0 0 8px 0;
+  z-index: 200;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--berry);
+  outline-offset: 3px;
+}
+
+/* ---------- Eyebrow / bilingual label — signature device ---------- */
+/* Every section is introduced by a short label shown in English with its
+   Spanish counterpart underneath: a small, concrete nod to the org's
+   bilingual mission that repeats as a structural rhythm across the site. */
+.eyebrow {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 18px;
+}
+.eyebrow .en {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--berry);
+}
+.eyebrow .es {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.98rem;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+
+.btn-primary {
+  background: var(--marigold);
+  color: var(--ink);
+}
+.btn-primary:hover { background: var(--marigold-dark); }
+
+.btn-outline {
+  background: transparent;
+  border-color: currentColor;
+  color: var(--paper-raised);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+.btn-outline-ink {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.btn-outline-ink:hover { background: rgba(var(--ink-rgb), 0.06); }
+
+.btn-berry {
+  background: var(--berry);
+  color: #fff;
+}
+.btn-berry:hover { background: var(--purple-dark); }
+
+/* ---------- Header / nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(251, 246, 236, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Signature detail: a thin strip of the logo's own rainbow book-arc,
+   repeated once per page as a quiet, literal brand callback. */
+.rainbow-strip {
+  height: 4px;
+  background: var(--rainbow);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+.brand-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 400px) {
+  .brand-logo { height: 34px; }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+.nav-links a {
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  background: var(--sky-tint);
+  color: var(--ink);
+}
+
+.nav-cta { margin-left: 8px; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+.nav-toggle svg { width: 26px; height: 26px; color: var(--ink); }
+
+@media (max-width: 880px) {
+  .nav-toggle { display: inline-flex; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--paper-raised);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 12px;
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-soft);
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { display: block; text-align: left; }
+  .nav-cta { margin-left: 0; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 72px 0 96px;
+  overflow: hidden;
+}
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero-eyebrow {
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: var(--berry);
+  margin-bottom: 14px;
+  display: block;
+}
+.hero h1 { margin-bottom: 20px; }
+.hero .lede {
+  font-size: 1.15rem;
+  max-width: 46ch;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+}
+.hero-art {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 900px) {
+  .hero .container { grid-template-columns: 1fr; }
+  .hero-art { order: -1; }
+}
+
+/* ---------- Page hero (secondary pages) ---------- */
+.page-hero {
+  padding: 64px 0 48px;
+  background: var(--ink);
+  color: #fff;
+}
+.page-hero h1 { color: #fff; }
+.page-hero .lede { color: rgba(255,255,255,0.82); max-width: 60ch; }
+.page-hero .eyebrow .en { color: var(--marigold); }
+.page-hero .eyebrow .es { color: rgba(255,255,255,0.7); }
+
+/* ---------- Cards ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 980px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--paper-raised);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--line);
+}
+.card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.card-icon svg { width: 26px; height: 26px; }
+.card h3 { margin-bottom: 10px; }
+.card p { margin-bottom: 0; font-size: 0.98rem; }
+
+.icon-tint-a { background: var(--sky-tint); color: var(--sky); }
+.icon-tint-b { background: var(--marigold-tint); color: var(--marigold-dark); }
+.icon-tint-c { background: var(--berry-tint); color: var(--berry); }
+
+/* ---------- Section variants ---------- */
+.section-tinted { background: var(--sky-tint); }
+.section-ink {
+  background: var(--ink);
+  color: #fff;
+}
+.section-ink h2, .section-ink h3 { color: #fff; }
+.section-ink p { color: rgba(255,255,255,0.82); }
+.section-ink .eyebrow .en { color: var(--marigold); }
+.section-ink .eyebrow .es { color: rgba(255,255,255,0.7); }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+@media (max-width: 880px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+.media-frame {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+/* Why-it-matters list */
+.matters-list {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.matters-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 1.02rem;
+  color: rgba(255,255,255,0.92);
+}
+.matters-list svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--marigold);
+}
+
+/* Approach feature cards (4-up, no numbering — not a sequence) */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 980px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .feature-grid { grid-template-columns: 1fr; } }
+
+.feature {
+  padding: 8px 4px;
+}
+.feature .card-icon { margin-bottom: 16px; }
+.feature h3 { font-size: 1.15rem; }
+.feature p { font-size: 0.95rem; }
+
+/* Partnerships */
+.partner-types {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: 32px 0 8px;
+}
+@media (max-width: 880px) { .partner-types { grid-template-columns: repeat(2, 1fr); } }
+.partner-type {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  background: var(--paper-raised);
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Get involved */
+.involve-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 880px) { .involve-grid { grid-template-columns: 1fr; } }
+.involve-card {
+  background: var(--paper-raised);
+  border-radius: var(--radius-md);
+  padding: 34px 28px;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.involve-card p { flex-grow: 1; }
+.involve-card .btn { align-self: flex-start; margin-top: 12px; }
+
+/* CTA banner */
+.cta-banner {
+  background: var(--berry);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  text-align: center;
+}
+.cta-banner h2, .cta-banner p { color: #fff; }
+.cta-banner p { color: rgba(255,255,255,0.88); max-width: 56ch; margin-inline: auto; }
+.cta-banner .btn-primary { color: var(--ink); }
+
+/* Note / placeholder callouts (for content the org will add later) */
+.note {
+  border: 1.5px dashed var(--sky);
+  background: var(--sky-tint);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.note strong { color: var(--ink); }
+
+/* ---------- Contact page ---------- */
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 900px) { .contact-wrap { grid-template-columns: 1fr; } }
+
+.contact-info h3 { margin-top: 28px; }
+.contact-info .addr {
+  font-style: normal;
+  color: var(--ink-soft);
+}
+.contact-info .ein {
+  margin-top: 18px;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.form-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-soft);
+}
+.field {
+  margin-bottom: 20px;
+}
+.field label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--paper);
+  color: var(--ink);
+}
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--sky);
+}
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } }
+
+.form-status {
+  margin-top: 14px;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+.form-status.success { color: var(--sky); }
+.form-status.error { color: var(--berry); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.78);
+  padding: 56px 0 28px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.4fr;
+  gap: 36px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+@media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } }
+
+.footer-brand {
+  margin-bottom: 16px;
+}
+.footer-logo-chip {
+  display: inline-flex;
+  background: var(--paper-raised);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+}
+.footer-logo-chip img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+.footer-tag { color: rgba(255,255,255,0.7); max-width: 32ch; }
+
+.footer-nav h4, .footer-legal h4 {
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.footer-nav ul { list-style: none; display: grid; gap: 10px; }
+.footer-nav a:hover { color: #fff; }
+
+.footer-legal p { color: rgba(255,255,255,0.7); font-size: 0.92rem; }
+.footer-legal strong { color: #fff; }
+
+.footer-bottom {
+  padding-top: 22px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  text-align: center;
+}
+
+/* ---------- Reveal-on-scroll (subtle, respects reduced motion) ----------
+   Content is visible by default (plain .reveal has no hidden state).
+   The hidden-until-scrolled state only applies once script.js has
+   confirmed it's running and added "js" to <html> — so a JS error,
+   a disabled script, or an old browser never results in blank
+   sections; the animation is a bonus, not a dependency. */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Section heads ---------- */
+.section-head {
+  max-width: 68ch;
+  margin-bottom: 44px;
+}
+.section-head.center { margin-inline: auto; text-align: center; }

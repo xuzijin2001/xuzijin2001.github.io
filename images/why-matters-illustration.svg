@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 480" role="img" aria-labelledby="matterTitle matterDesc">
+  <title id="matterTitle">Illustration placeholder</title>
+  <desc id="matterDesc">Placeholder illustration representing an educator reading with two children in a classroom. Replace with a real photograph for the live site.</desc>
+  <rect width="560" height="480" fill="#26344A"/>
+  <circle cx="280" cy="240" r="210" fill="#33445F"/>
+
+  <!-- educator (larger figure) -->
+  <g transform="translate(280 230)">
+    <circle cx="0" cy="0" r="36" fill="#DAB250"/>
+    <path d="M-56 96 C-56 38 -28 8 0 8 C28 8 56 38 56 96 Z" fill="#6B3FA0"/>
+  </g>
+  <!-- child 1 -->
+  <g transform="translate(180 320)">
+    <circle cx="0" cy="0" r="22" fill="#3C8C4A"/>
+    <path d="M-34 58 C-34 24 -17 6 0 6 C17 6 34 24 34 58 Z" fill="#DAB250"/>
+  </g>
+  <!-- child 2 -->
+  <g transform="translate(380 320)">
+    <circle cx="0" cy="0" r="22" fill="#EFE7F5"/>
+    <path d="M-34 58 C-34 24 -17 6 0 6 C17 6 34 24 34 58 Z" fill="#3C8C4A"/>
+  </g>
+
+  <!-- open book -->
+  <g transform="translate(230 340)">
+    <path d="M0 0 C22 -10 50 -10 50 0 V38 C50 28 22 28 0 38 Z" fill="#FBF6EC"/>
+    <path d="M100 0 C78 -10 50 -10 50 0 V38 C50 28 78 28 100 38 Z" fill="#FBF6EC"/>
+  </g>
+
+  <!-- language chips -->
+  <g font-family="Karla, sans-serif" font-weight="700" font-size="13" fill="#26344A">
+    <rect x="70" y="110" width="70" height="30" rx="15" fill="#DAB250"/>
+    <text x="105" y="130" text-anchor="middle">EN</text>
+    <rect x="420" y="110" width="70" height="30" rx="15" fill="#6B3FA0"/>
+    <text x="455" y="130" text-anchor="middle" fill="#FFFFFF">ES</text>
+  </g>
+</svg>

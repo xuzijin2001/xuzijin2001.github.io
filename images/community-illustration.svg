@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 480" role="img" aria-labelledby="commTitle commDesc">
+  <title id="commTitle">Illustration placeholder</title>
+  <desc id="commDesc">Placeholder illustration representing a group of educators and partners gathered together. Replace with a real photograph for the live site.</desc>
+  <rect width="560" height="480" fill="#E7F1E7"/>
+
+  <g>
+    <g transform="translate(140 220)">
+      <circle cx="0" cy="0" r="28" fill="#6B3FA0"/>
+      <path d="M-44 70 C-44 28 -22 8 0 8 C22 8 44 28 44 70 Z" fill="#26344A"/>
+    </g>
+    <g transform="translate(230 190)">
+      <circle cx="0" cy="0" r="32" fill="#DAB250"/>
+      <path d="M-48 78 C-48 32 -25 8 0 8 C25 8 48 32 48 78 Z" fill="#3C8C4A"/>
+    </g>
+    <g transform="translate(330 210)">
+      <circle cx="0" cy="0" r="28" fill="#3C8C4A"/>
+      <path d="M-44 70 C-44 28 -22 8 0 8 C22 8 44 28 44 70 Z" fill="#6B3FA0"/>
+    </g>
+    <g transform="translate(420 235)">
+      <circle cx="0" cy="0" r="26" fill="#26344A"/>
+      <path d="M-40 66 C-40 26 -20 6 0 6 C20 6 40 26 40 66 Z" fill="#DAB250"/>
+    </g>
+  </g>
+
+  <!-- connecting lines symbolizing partnership -->
+  <g stroke="#26344A" stroke-width="2" stroke-dasharray="3 8" opacity="0.5">
+    <line x1="160" y1="240" x2="230" y2="215"/>
+    <line x1="260" y1="215" x2="330" y2="235"/>
+    <line x1="358" y1="235" x2="420" y2="258"/>
+  </g>
+
+  <circle cx="280" cy="240" r="200" fill="none" stroke="#DAB250" stroke-width="2" stroke-dasharray="4 10" opacity="0.5"/>
+</svg>

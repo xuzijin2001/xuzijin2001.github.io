@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">Illustration placeholder</title>
+  <desc id="heroDesc">Placeholder illustration representing a circle of bilingual early childhood educators. Replace with a real photograph of educators for the live site.</desc>
+  <defs>
+    <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E7F1E7"/>
+      <stop offset="1" stop-color="#FBEFD7"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="560" fill="url(#heroBg)"/>
+
+  <!-- decorative arcs -->
+  <circle cx="320" cy="280" r="200" fill="none" stroke="#DAB250" stroke-width="2" stroke-dasharray="4 10" opacity="0.55"/>
+
+  <!-- open book motif -->
+  <g transform="translate(230 360)">
+    <path d="M0 0 C40 -18 90 -18 90 0 V70 C90 52 40 52 0 70 Z" fill="#26344A"/>
+    <path d="M180 0 C140 -18 90 -18 90 0 V70 C90 52 140 52 180 70 Z" fill="#26344A"/>
+    <path d="M8 8 C40 -6 84 -6 84 8 V60 C84 46 40 46 8 60 Z" fill="#FBF6EC"/>
+    <path d="M172 8 C140 -6 96 -6 96 8 V60 C96 46 140 46 172 60 Z" fill="#FBF6EC"/>
+  </g>
+
+  <!-- circle of people: heads + shoulders, varied palette tones, no faces (kept abstract) -->
+  <g>
+    <!-- figure 1 -->
+    <g transform="translate(150 150)">
+      <circle cx="0" cy="0" r="30" fill="#6B3FA0"/>
+      <path d="M-46 74 C-46 30 -24 8 0 8 C24 8 46 30 46 74 Z" fill="#26344A"/>
+    </g>
+    <!-- figure 2 -->
+    <g transform="translate(320 110)">
+      <circle cx="0" cy="0" r="34" fill="#DAB250"/>
+      <path d="M-50 80 C-50 32 -27 8 0 8 C27 8 50 32 50 80 Z" fill="#3C8C4A"/>
+    </g>
+    <!-- figure 3 -->
+    <g transform="translate(480 165)">
+      <circle cx="0" cy="0" r="30" fill="#3C8C4A"/>
+      <path d="M-46 74 C-46 30 -24 8 0 8 C24 8 46 30 46 74 Z" fill="#6B3FA0"/>
+    </g>
+    <!-- figure 4, holding speech bubbles: bilingual greeting -->
+    <g transform="translate(490 330)">
+      <circle cx="0" cy="0" r="30" fill="#26344A"/>
+      <path d="M-46 74 C-46 30 -24 8 0 8 C24 8 46 30 46 74 Z" fill="#DAB250"/>
+    </g>
+    <!-- figure 5 -->
+    <g transform="translate(160 340)">
+      <circle cx="0" cy="0" r="32" fill="#DAB250"/>
+      <path d="M-48 78 C-48 32 -26 8 0 8 C26 8 48 32 48 78 Z" fill="#6B3FA0"/>
+    </g>
+  </g>
+
+  <!-- speech bubbles: two languages, one greeting -->
+  <g font-family="Karla, sans-serif" font-weight="700">
+    <g transform="translate(392 200)">
+      <rect x="-6" y="-24" width="76" height="40" rx="14" fill="#FFFFFF"/>
+      <path d="M6 16 L-4 30 L18 16 Z" fill="#FFFFFF"/>
+      <text x="32" y="1" text-anchor="middle" font-size="16" fill="#26344A">Hi</text>
+    </g>
+    <g transform="translate(90 250)">
+      <rect x="-6" y="-24" width="104" height="40" rx="14" fill="#FFFFFF"/>
+      <path d="M86 16 L96 30 L74 16 Z" fill="#FFFFFF"/>
+      <text x="46" y="1" text-anchor="middle" font-size="16" fill="#26344A">Hola</text>
+    </g>
+  </g>
+</svg>
