@@ -162,3 +162,23 @@ Until this is connected, the form shows a friendly "not connected yet" message i
 - **A thin rainbow strip** under the header on every page echoes the rainbow arc in the logo's open-book mark.
 - No statistics, staff names, or leadership bios were invented. The impact numbers are explicitly marked placeholders, and the Leadership section is a clearly labeled "coming soon" note rather than fabricated names.
 - No donation or payment system is included, per the brief — the "Support Our Mission" option links to the Contact page instead.
+
+## Languages (English / 中文 / Español)
+
+A globe button in the header switches the whole site between English, Chinese,
+and Spanish. Everything lives in `js/i18n.js`.
+
+- Every translatable string in the HTML carries a `data-i18n="sNNN"` key.
+  Page titles and meta descriptions use `data-i18n-content`, image alt text
+  uses `data-i18n-alt`, form placeholders use `data-i18n-placeholder`.
+- `js/i18n.js` holds three dictionaries (`en`, `zh`, `es`) keyed by those ids.
+  To fix a translation, find the key in the `zh` or `es` block and edit the text.
+- To add new translatable text: give the element `data-i18n="myKey"` and add
+  `"myKey"` to all three dictionaries. If a key is missing from `zh` or `es`,
+  the English text is shown instead — nothing breaks.
+- The visitor's choice is stored in `localStorage`. First-time visitors get a
+  language guessed from their browser settings. `?lang=zh` (or `es`/`en`) in the
+  URL forces a language, which is handy for sharing a link with a specific group.
+
+The Chinese and Spanish text was translated as a first pass — have a native
+speaker review it before launch, especially the mission and vision statements.
